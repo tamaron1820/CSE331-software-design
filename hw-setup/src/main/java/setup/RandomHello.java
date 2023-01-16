@@ -15,6 +15,7 @@ public class RandomHello {
     public String getGreeting() {
         // YOUR CODE GOES HERE
         Random randomGenerator = new Random();
+        //Generate random number
         int num = randomGenerator.nextInt(5);
         String[] greetings = new String[5];
         greetings[0] = "Hello World";
