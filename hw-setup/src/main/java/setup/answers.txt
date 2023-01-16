@@ -4,15 +4,14 @@
 1. Why did Fibonacci fail the testThrowsIllegalArgumentException< test? What (if anything) did
 you have to do to fix it? If you did not have to change anything to fix this issue, explain why.
 
-
+Basically, the FibonacciTest.java program uses an array index to determine the number of Fibonacci, rather than the number of Fibonacci counting from the front. In contrast, Fibonacci.java program determines the value of the Fibonacci sequence by counting from front. That is why 1th and 2nd Fibonacci sequencec are 1. In other words, there is no number as the 0th element from the front, so 0 is also included as a minus sign. Therefore, I changed this part to n<0 according to the specification of FibonacciTest.java so that the first number in the Fibonacci sequence does not cause an error.
 
 2. Why did Fibonacci fail the testBaseCase test? What (if anything) did you have to do to fix
 it? If you did not have to change anything to fix this issue, explain why.
 
-
+As pointed out in the previous problem, the biggest problem is that the Fibonaccitest.java program specifies the position of the number in the Fibonacci sequence using the index of the array, whereas the Fibonacci.java program specifies the Fibonacci sequence by counting from the previous one. Therefore, the 0 specified as the index of the array in the Fibonaccitest.java program was recognized as a minus as in the previous problem, which caused the error. Therefore, the error was resolved by changing n<=0 to n<0, which was corrected in the previous problem. In other words, the 0 and 1 cases specified in testBaseCase were evaluated as array indices.
 
 3.Why did Fibonacci fail the testInductiveCase test? What (if anything) did you have to do to
 fix it? If you did not have to change anything to fix this issue, explain why.
 
-
-
+As pointed out in the previous problem, the biggest problem is that the Fibonaccitest.java program uses the array index to specify the position of the number in the Fibonacci sequence, whereas the Fibonacci.java program determines the Fibonacci number sequence by counting from the previous one. Therefore, to specify the number before the second as 1, n<=2 is changed to n+1<=2, which is changed from being evaluated as the index of an array to the form conforming to the Fibonacci.java specification. And I changed the part getFibTerm(n - 1) - getFibTerm(n - 2) to getFibTerm(n - 1) + getFibTerm(n - 2). Because the Fibonacci sequence is the sequence of the sum of the previous number and the current number.
