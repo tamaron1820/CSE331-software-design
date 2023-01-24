@@ -89,7 +89,7 @@ public class Box implements Iterable<Ball> {
      * ascending size.
      */
     public Iterator<Ball> getBallsFromSmallest() {
-        // Your code goes here.  Remove the exception after you're done.
+        // Your cod@[]\09e goes here.  Remove the exception after you're done.
         List<Ball> list = new ArrayList<Ball>();
         Iterator<Ball> iterator = iterator();
         while (iterator.hasNext()) {

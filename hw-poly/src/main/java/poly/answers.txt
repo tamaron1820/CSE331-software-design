@@ -3,15 +3,55 @@
 ###########################################################################
 
 1. Multiplication Pseudocode
-
+r=p*q;
+    set r=0;
+    {inv: r=q_0*p_0+q_0*p_1...+q_1*p_0+q_1*p_1...q_i-1*p_j-1, where q_i is the ith term in q and where p_j is the jth term in p}
+    foreach term t_p in p:
+        foreach term t_q in q:
+            set t_pq = t_p*t_q;
+            if any term t_r in r has same degree as t_pq
+                then replace t_r in r with the sum of t_pq and t_r
+                else insert t_pq into r as a new term
 
 
 2. Division Pseudocode
-
-
+r=p/q;
+    set r=0;
+    set num=p; by making a term-by-term copy of all terms in p to num
+    {inv: r=q_0*quotient+q_1*quotient...q_i-1*quotient, where q_i is the ith term in q}
+    while (the highest degree of num term t_num_high in num) >= (the highest degree of q t_q_high in q):
+        set quotient = t_num_high / t_q_high;
+        insert quotient into r as a new term
+        set total=0
+        foreach term t_q in q:
+            total = total+(quotient*t_q);
+        num =num-total;
 
 3. Division Example: (x3+x-1) / (x+1) = x2-x+2
-
+    p=(x3+x-1)
+    q=(x+1)
+    r=0
+    num=copy of p=(x3+x-1)
+    while (the highest degree of num term t_num_high in num) >= (the highest degree of q t_q_high in q)
+        iteration1:
+            quotient=x2 r=x2 total=0
+            foreach term t_q in q:
+                iteration1: total=x3
+                iteration2: total=x3+x2
+            num=(-x2+x-1)
+        iteration2:
+            quotient=-x r=x2-x total=0
+            foreach term t_q in q:
+                iteration1: total=(-x2)
+                iteration2: total=(-x2)+(-x)
+            num=(2x-1)
+        iteration3:
+            quotient=2 r=x2-x+2 total=0
+            foreach term t_q in q:
+                iteration1: total=2x
+                iteration2: total=2x+2
+            num=-3
+        we are done! r=x2-x+2
 
 
 
@@ -19,15 +59,22 @@
 ###########################################################################
 
 1. Weakened Rep Invariant
-
-
+ (a) RatNum(int n,int d)
+    It is no longer necessary to execute the method gcd, which finds the greatest common divisor of n and d, in the RatNum(int n, int d) constructor. In other words, lines 95-97 of RatNum.java are no longer needed. numer and denom no longer need to store reduced forms, so these lines of work are no longer necessary. It is less runtime and complexity and high code clarity.
+ (b) checkRep()
+    checkRep no longer needs to check to see if it is a reduced form. The new inv already satisfies denom>=0. It is more efficient and highly code clarity because it's less of a wasteful process.
+ (c) hashCode()
+    We need a process in hashCode() that finds the greatest common divisor of numer and denom and divides the value into each of them. This process is necessary because the divisible fractions must have the same hashCode. In other words, after line 331, add int g = gcd(numer, denom); numer = numer / g; denom = denom / g;. It is highly code clarity because divisible fractions have same hashCode.
+ (d) equals()
+    We need code to find the reduced form when this and rn are not NaN. This change would improve code clarity as the return statement on line 351 would return true if this and rn are equal but different for reasons other than reduced form. Code efficiency will also decrease due to the new processing.
+ (e) toString()
+    In toString(), we must add code to find the reduced form of denom and numeric. That is, the process of taking the greatest common divisor of two numbers and dividing each number by its value. This change is expected to increase code clarity, although code efficiency will be reduced by the new process.
 
 2. Alternate add, sub, mul, div
+    In the RatNum class spec, RatNum is immutable. The code shown in the new problem statement is the process of making changes to RatNum. Therefore, this code does not satisfy the RatNum spec.
 
-
-
-3. Constructor checkReps
-
+3. Constructor checkRep
+    The reason why checkRep() is not necessary for each method is because RatNum is immutable, so no method will make any changes to RatNum. Therefore, it is sufficient to execute checkRep() in the end of code of the constructor.
 
 
 
@@ -35,19 +82,32 @@
 ###########################################################################
 
 1. Calls to checkRep in RatTerm
-
-
+    In the constructor, I put checkRep() in the end part, because RatTerm is immutable and these fields cannot be changed. I also put arg.checkRep() in the start part of add and mul and div. checkRep() does not need to be applied to this because RatTerm is immutable. Also, arg.checkRep() is executed for sub as well because the add method is used for sub.
 
 2. Weakened Rep Invariant
+    (a) checkRep()
+        The second assertion in the checkRep() method is not necessary. The second assertion in the checkRep() method is no longer necessary, since the weakening of the representation invariant eliminates the need to check whether the coeff is zero or not. This change improves the efficiency of code and it has high code clarity.
 
+    (b) toString()
+        The toString() method needs to be changed to check if the coeff is RatNum.ZERO. Currently there is only a check for expt. This change would reduce code efficiency and code clarity.
 
+    (c) equals()
+        The equals() method would need to have a condition such that it returns true when both instances of thisis and obj are zero. This change would reduce code clarity and code efficiency.
+
+    (d) RatTerm(RatNum c, int e)
+        The RatTerm constructor does not need to set expt to 0 when c.equals(RatNum.ZERO). This change would improve code clarity since the expt is handled as is.
+
+    (e) add()
+        The add() method must be changed to return 0 on this.isZero() and arg.isZero(). This change may decrease code efficiency.
 
 3. Alternate Rep Invariant
+    (a) RatTerm(RatNum c, int e)
+        The RatTerm constructor will need to process to set the expt to zero when the coeff is NaN. In this case, code efficiency and code clarity will be reduced.
 
-
+    (b)　checkRep()
+        It is believed that this.expt==0 in the checkRep() method needs to be changed. This change would improve code efficiency as it would reduce extra processing.
 
 4. Preferred Invariants
-
 
 
 
@@ -55,10 +115,9 @@
 ###########################################################################
 
 1. Calls to checkRep in RatPoly
-
-
+ I added checkRep() to each end of the RatPoly constructor. Since RatPoly is immutable, RatPoly is not modified outside of the constructor. Therefore, checking representation invariant only end of the RatPoly constructor is enough. I added checkRep beginning of the methods (add, sub, mul, div) to check if RatPoly argument meets representation invariant.
 
 2. Alternate Representation
-
+    The good point is that everytime I implement new RatTerm instance, I do not have to set both coefficient and exponent. The bad point is that if coefficient becomes 0, I have to remove both coefficient and exponent from both lists. It takes twice code efficiency compared to current program.
 
 
