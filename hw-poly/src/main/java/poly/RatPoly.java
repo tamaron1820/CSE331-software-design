@@ -291,9 +291,9 @@ public final class RatPoly {
         if (this.isNaN()) {
             return new RatPoly(RatTerm.NaN);
         }else {
-            ArrayList<RatTerm> copy_term = new ArrayList<>(terms);
-            scaleCoeff(copy_term,new RatNum(-1));
-            return new RatPoly(copy_term);
+            ArrayList<RatTerm> copyterm = new ArrayList<>(terms);
+            scaleCoeff(copyterm,new RatNum(-1));
+            return new RatPoly(copyterm);
         }
     }
 
@@ -348,13 +348,13 @@ public final class RatPoly {
             return RatPoly.NaN;
         } else {
 
-            ArrayList<RatTerm> next_terms = new ArrayList<RatTerm>();
+            ArrayList<RatTerm> nextterms = new ArrayList<RatTerm>();
             for (RatTerm rt: terms) {
-                for(RatTerm new_rt: p.terms){
-                    sortedInsert(next_terms,rt.mul(new_rt));
+                for(RatTerm newrt: p.terms){
+                    sortedInsert(nextterms,rt.mul(newrt));
                 }
             }
-            return new RatPoly(next_terms);
+            return new RatPoly(nextterms);
         }
     }
 
