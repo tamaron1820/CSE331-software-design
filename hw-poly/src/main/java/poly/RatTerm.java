@@ -172,7 +172,6 @@ public final class RatTerm {
      */
     public RatTerm add(RatTerm arg) {
         // TODO: Fill in this method, then remove the RuntimeException
-
         arg.checkRep();
         if (this.isNaN() || arg.isNaN()) {
             return NaN;
