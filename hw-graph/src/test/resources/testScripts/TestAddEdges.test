@@ -1,0 +1,24 @@
+# Tests that add edges correctly
+# Test if same edge is added graph should not change
+# Test if add another edge between two nodes which are already connected by
+# different edge, the edge should be added
+
+# Create a graph
+CreateGraph graph1
+
+# Add nodes
+AddNode graph1 n1
+AddNode graph1 n2
+AddNode graph1 n3
+
+# Add edges
+AddEdge graph1 n1 n2 e1
+AddEdge graph1 n1 n2 e2
+AddEdge graph1 n1 n2 e1
+AddEdge graph1 n3 n1 e3
+AddEdge graph1 n2 n1 e4
+
+# Prints the nodes in the graph and the outgoing edges from n1 and n2. n3
+ListNodes graph1
+ListChildren graph1 n1
+ListChildren graph1 n2

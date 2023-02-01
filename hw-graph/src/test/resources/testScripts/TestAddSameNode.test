@@ -1,0 +1,13 @@
+# Tests that add Nodes correctly
+# Test if same node is added graph should not change
+
+# Create a graph
+CreateGraph graph1
+
+# Add nodes
+AddNode graph1 n1
+AddNode graph1 n1
+
+# Print the nodes in the graph and the outgoing edges from a and b
+ListNodes graph1
+ListChildren graph1 n1
