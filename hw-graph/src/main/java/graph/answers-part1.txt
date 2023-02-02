@@ -8,7 +8,16 @@ interface to a graph. If your design includes multiple classes or interfaces, ex
 included each one; if not, explain whether you considered additional classes and why you decided
 not to include them.
 
-
+I divided the classes into four classes to realize directed graphs: Edge class contains methods
+related to Edge, Node class contains methods related to Node, BaseGraph is the interface to Graph,
+and Graph class is the interface to BaseGraph is the base class and contains methods related to Graph;
+the Graph class uses HashMap to manage parent and child nodes and edge labels; the Node class contains
+methods related to Edge; and the Graph class is the interface to Graph. Specifically, the keys of the
+HashMap are the parent nodes, and the values contain the labels sets of the edges and the child nodes.
+In each of my classes, I defined methods for knowing the contents of various graphs in addition to addNode
+and addEdge, which are necessary as basic operations on directed graphs. For example, parent, child,
+and Edge can be retrieved by specifying their arguments. I also defined the isConnected method,
+which checks whether parent, edgename, and child are actually connected by specifying them respectively.
 
 
 ## Part 2
@@ -17,5 +26,13 @@ not to include them.
 What was your testing strategy for this assignment? How do your script tests and JUnit tests
 differ from each other (if they do), and why?
 
+I initially wrote .test and .expected files. The content was mainly about test cases for adding
+parent nodes, child node edges, etc. I also considered cases where the edge is not updated if it
+already exists, and cases where the graph does not change if the parent node, child nodes, and
+edge are all the same. Next, I wrote three separate JUnit tests. In EdgeTest and GraphTest,
+I mainly tested whether the labels of the respective nodes and edges were recognized correctly,
+and also tested the hash code. I tested the basic methods defined in Graph, such as addNode
+and addEdge. I also set up tests for all the other methods that are suitable for all the other
+methods to learn more about the contents of the graph. These methods are not included in the script tests.
 
 

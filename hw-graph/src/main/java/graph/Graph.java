@@ -6,7 +6,8 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * <b>Graph </b> represents a mutable directed graph.
+ * <b>Graph </b> represents a mutable directed graph. Graph class interface
+ * is BaseGraph interface.
  *
  * <p> Graph can be notated by pair (N . E), where N is a parent Node, E is a
  * pair of (E , T) where E is an edge name, T is a child name.
@@ -103,6 +104,7 @@ public class Graph<N,E> implements BaseGraph<N,E> {
 
     /**
      * Check if given parent and edgename are pointed to correct child
+     *
      * @param parent
      * @param edgename
      * @param child
