@@ -67,6 +67,7 @@ public class Edge <E,N>{
         checkRep();
         return this.child;
     }
+
     /**
      * Returns a boolean of this and obj
      *
@@ -87,6 +88,7 @@ public class Edge <E,N>{
             return edge.label.equals(this.label) && edge.child.equals(this.child);
         }
     }
+
     /**
      * Returns hash code
      *
@@ -94,6 +96,6 @@ public class Edge <E,N>{
      */
     @Override
     public int hashCode() {
-        return label.hashCode()* child.hashCode();
+        return label.hashCode()^child.hashCode();
     }
 }

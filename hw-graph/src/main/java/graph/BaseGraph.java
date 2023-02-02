@@ -81,5 +81,15 @@ public interface BaseGraph<N,E> {
      * @throws IllegalArgumentException if parent and child are null
      * @return a edge between parent node and child node
      */
-    public Edge<E,N> getEdge(Node<N> parent, Node<N> child);
+    public E getEdge(Node<N> parent, Node<N> child);
+
+    /**
+     * Returns whether node is included in graph
+     *
+     * @param nodes is a name of node for checking whether the node is
+     * included in graph
+     * @throws IllegalArgumentException if the graph is null
+     * @return true if the node is included in graph
+     */
+    public boolean containedNode(Node<N> nodes);
 }

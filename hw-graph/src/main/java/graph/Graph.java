@@ -76,13 +76,6 @@ public class Graph<N,E> implements BaseGraph<N,E> {
     }
 
     /**
-     * Check if node n is already contained in graph.
-     *
-     * @param n
-     * @return true if and only if node n is not already contained in graph
-     */
-
-    /**
      * Add a new Edge which is not already contained in graph
      *
      * @param parent is a parent name of the edge
@@ -147,12 +140,12 @@ public class Graph<N,E> implements BaseGraph<N,E> {
     @Override
     public Set<Node<N>> getChildNode(Node<N> parent) {
         checkRep();
-        Set<Node<N>> childnode = new HashSet<>();
+        Set<Node<N>> childNode = new HashSet<>();
         for (Edge<E,N> e:graph.get(parent)) {
-            childnode.add((Node<N>) e.getChildName());
+            childNode.add((Node<N>) e.getChildName());
         }
         checkRep();
-        return childnode;
+        return childNode;
     }
 
     /**
@@ -197,17 +190,41 @@ public class Graph<N,E> implements BaseGraph<N,E> {
      * @throws IllegalArgumentException if parent or child are null
      */
     @Override
-    public Edge<E,N> getEdge(Node<N> parent, Node<N> child) {
+    public E getEdge(Node<N> parent, Node<N> child) {
         checkRep();
         if(parent == null || child == null) {
             throw new IllegalArgumentException("parent or child should not be null");
         } else {
             for (Edge<E,N> e: graph.get(parent)) {
                 if (e.getChildName().equals(child)) {
-                    return e;
+                    return e.getLabelName();
                 }
             }
             return null;
         }
+    }
+
+    /**
+     * Returns whether node is included in graph
+     *
+     * @param nodes is a name of node for checking whether the node is
+     * included in graph
+     * @throws IllegalArgumentException if the graph is null
+     * @return true if the node is included in graph
+     */
+    @Override
+    public boolean containedNode(Node<N> nodes) {
+        if(this.graph == null) throw new IllegalArgumentException();
+        return graph.containsKey(nodes);
+    }
+
+    /**
+     * Returns a size of graph
+     *
+     * @return a size of graph
+     */
+    public int graphSize() {
+        checkRep();
+        return graph.size();
     }
 }

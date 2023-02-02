@@ -10,7 +10,7 @@ public class Node <N>{
     /**
      * Holds parent name
      */
-    private final Node<N> parent;
+    private final N parent;
 
     // Abstract Function:
     // Node n, represents a  parent node
@@ -25,7 +25,7 @@ public class Node <N>{
      * @spec.requires {@code parent !=null}
      * @spec.effects Constructs a new node which node name is parent
      */
-    public Node(Node<N> parent) {
+    public Node(N parent) {
         this.parent = parent;
         checkRep();
     }
@@ -43,10 +43,11 @@ public class Node <N>{
      * @return the name of this node
      * @spec.requires this != null
      */
-    public Node<N> getParentName() {
+    public N getParentName() {
         checkRep();
         return this.parent;
     }
+
     /**
      * Returns a boolean of this and obj
      *
@@ -59,11 +60,11 @@ public class Node <N>{
         checkRep();
         if(this == obj) {
             return true;
-        } else if(!(obj instanceof Edge<?,?>)){
+        } else if(!(obj instanceof Node<?>)){
             return false;
         } else {
            Node<?> node = (Node<?>) obj;
-           return node.parent.equals(this.parent);
+           return this.parent.equals(node.parent);
         }
     }
 
