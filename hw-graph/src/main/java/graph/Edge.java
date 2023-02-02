@@ -76,6 +76,7 @@ public class Edge <E,N>{
      * child name of obj are same as this.
      * @spec.requires object != null
      */
+
     @Override
     public boolean equals(Object obj) {
         checkRep();
