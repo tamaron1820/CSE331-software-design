@@ -105,9 +105,9 @@ public class Graph<N,E> implements BaseGraph<N,E> {
     /**
      * Check if given parent and edgename are pointed to correct child
      *
-     * @param parent
-     * @param edgename
-     * @param child
+     * @param parent is a node of parent
+     * @param edgename is a name of edge
+     * @param child is a node of child
      * @spec.requires parent and edgename, child is not null
      * @spec.modifies this
      * @throws IllegalArgumentException if parent and edgename, child is null
@@ -135,7 +135,7 @@ public class Graph<N,E> implements BaseGraph<N,E> {
     /**
      * Returns Nodes which are connected with given parent node
      *
-     * @param parent
+     * @param parent is a node of parent
      * @spec.requires parent!=null
      * @return nodes which are connected with given node
      */
@@ -176,7 +176,6 @@ public class Graph<N,E> implements BaseGraph<N,E> {
     /**
      * Clear graph
      *
-     * @spec.effect clear all nodes and edges
      */
     public void clearGraph() {
         checkRep();

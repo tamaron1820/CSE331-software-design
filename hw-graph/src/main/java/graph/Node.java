@@ -1,10 +1,10 @@
 package graph;
 
 /**
- * <b><Node/b> is an immutable representation of parent node. Each Node has
+ * <b>Node</b> is an immutable representation of parent node. Each Node has
  * a parent node
  *
- * <p> Node can be notated by N, where N is a name of node
+ * <p>Node can be notated by N, where N is a name of node
  */
 public class Node <N>{
     /**
@@ -21,7 +21,7 @@ public class Node <N>{
 
     /**
      * Consstructs a new Node
-     * @param parent
+     * @param parent is a node of parent
      * @spec.requires {@code parent !=null}
      * @spec.effects Constructs a new node which node name is parent
      */

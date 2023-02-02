@@ -38,9 +38,9 @@ public interface BaseGraph<N,E> {
 
     /**
      * Check if given parent and edgename are pointed to correct child
-     * @param parent
-     * @param edgename
-     * @param child
+     * @param parent is a parent node
+     * @param edgename is a name of the edge
+     * @param child is a child node
      * @spec.requires parent and edgename, child is not null
      * @spec.modifies this
      * @throws IllegalArgumentException if parent and edgename, child is null
@@ -52,7 +52,7 @@ public interface BaseGraph<N,E> {
     /**
      * Returns Nodes which are connected with given parent node
      *
-     * @param parent
+     * @param parent is a parent node
      * @spec.requires parent!=null
      * @return nodes which are connected with given node
      */
