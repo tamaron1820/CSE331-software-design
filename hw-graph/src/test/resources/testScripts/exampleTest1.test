@@ -6,7 +6,7 @@
 # We provide this test purely for you to verify your
 # implementation of a variety of test script commands.
 # This is NOT an example of a properly low-granularity test
-# case,nor is it intended to be! Your tests, unlike this
+# case, nor is it intended to be! Your tests, unlike this
 # one, should only test one condition per file. The name and
 # comments of your files should describe the condition being tested.
 
