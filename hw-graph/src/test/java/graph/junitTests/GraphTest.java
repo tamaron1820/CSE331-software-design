@@ -31,14 +31,6 @@ public class GraphTest {
         graph1 = new Graph<>();
     }
 
-    @Test
-    public void testAddNodes () {
-        graph1.addNode(n1);
-        graph1.addNode(n2);
-        graph1.addNode(n3);
-        assertFalse(graph1.graphSize()==5);
-        assertTrue(graph1.graphSize()==3);
-    }
 
     @Test
     public void testIsConnected() {

@@ -11,16 +11,22 @@
 
 package graph.scriptTestRunner;
 
+import graph.Edge;
+import graph.Graph;
+import graph.Node;
+import org.junit.Rule;
+import org.junit.rules.Timeout;
+
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 /**
  * This class implements a testing driver which reads test scripts
  * from files for testing Graph.
  **/
 public class GraphTestDriver {
+    @Rule
+    public Timeout globalTimeout = Timeout.seconds(10);
 
     // ***************************
     // ***  JUnit Test Driver  ***
@@ -30,7 +36,7 @@ public class GraphTestDriver {
      * String -> Graph: maps the names of graphs to the actual graph
      **/
     // TODO for the student: Uncomment and parameterize the next line correctly:
-    //private final Map<String, _______> graphs = new HashMap<String, ________>();
+    private final Map<String, Graph<String, String>> graphs = new HashMap<>();
     private final PrintWriter output;
     private final BufferedReader input;
 
@@ -116,9 +122,8 @@ public class GraphTestDriver {
 
     private void createGraph(String graphName) {
         // TODO Insert your code here.
-
-        // graphs.put(graphName, ___);
-        // output.println(...);
+        graphs.put(graphName, new Graph<>());
+        output.println("created graph " + graphName);
     }
 
     private void addNode(List<String> arguments) {
@@ -134,9 +139,9 @@ public class GraphTestDriver {
 
     private void addNode(String graphName, String nodeName) {
         // TODO Insert your code here.
-
-        // ___ = graphs.get(graphName);
-        // output.println(...);
+        Graph<String, String> graph1 = graphs.get(graphName);
+        graph1.addNode(new Node<>(nodeName));
+        output.println("added node " + nodeName +  " to " + graphName);
     }
 
     private void addEdge(List<String> arguments) {
@@ -155,9 +160,12 @@ public class GraphTestDriver {
     private void addEdge(String graphName, String parentName, String childName,
                          String edgeLabel) {
         // TODO Insert your code here.
-
-        // ___ = graphs.get(graphName);
-        // output.println(...);
+        Graph<String, String> graph1 = graphs.get(graphName);
+        Node<String> n1 = new Node<>(parentName);
+        Node<String> n2 = new Node<>(childName);
+        graph1.addEdge(n1,edgeLabel,n2);
+        output.println("added edge " + edgeLabel + " from " + parentName + " to "
+                + childName + " in " + graphName);
     }
 
     private void listNodes(List<String> arguments) {
@@ -171,9 +179,12 @@ public class GraphTestDriver {
 
     private void listNodes(String graphName) {
         // TODO Insert your code here.
-
-        // ___ = graphs.get(graphName);
-        // output.println(...);
+        Graph<String,String> graph1 = graphs.get(graphName);
+        String nodeList = graphName + " contains:";
+        List<Node<String>> nodes = new ArrayList<>(graph1.getAllNode());
+        nodes.sort(new NodeCompare());
+        for (Node<String> n: nodes) nodeList += " " + n.getParentName();
+        output.println(nodeList);
     }
 
     private void listChildren(List<String> arguments) {
@@ -188,9 +199,12 @@ public class GraphTestDriver {
 
     private void listChildren(String graphName, String parentName) {
         // TODO Insert your code here.
-
-        // ___ = graphs.get(graphName);
-        // output.println(...);
+        Graph<String,String> graph1 = graphs.get(graphName);
+        List<Edge<String,String>> edges1 = new ArrayList<>(graph1.getAllEdge(new Node<>(parentName)));
+        edges1.sort(new EdgeCompare());
+        output.print("the children of " + parentName + " in " + graphName + " are:");
+        for (Edge e: edges1) output.print(" " + e.getChildName().getParentName() + "(" + e.getLabelName() + ")");
+        output.println();
     }
 
     /**
@@ -207,5 +221,46 @@ public class GraphTestDriver {
         }
 
         public static final long serialVersionUID = 3495;
+    }
+    /**
+     * Implements a Comparator to compare two nodes
+     */
+    private static class NodeCompare implements Comparator<Node<String>> {
+        /**
+         * Compare two nodes by alphabetically
+         * @param node1 First node looked at
+         * @param node2 Second node looked at
+         * @return a negative integer if first node is less than second node,
+         * a positive integer if first node is greater than second node,
+         * 0 if first node is equal to second node.
+         * @throws IllegalArgumentException if either of given nodes are null
+         */
+        public int compare(Node<String> node1, Node<String> node2) {
+            if (node1 == null || node2 == null) throw new IllegalArgumentException();
+            return node1.getParentName().compareTo(node2.getParentName());
+        }
+    }
+    /**
+     * Implements a Comparator to compare two edges
+     */
+    private static class EdgeCompare implements Comparator<Edge<String,String>> {
+        /**
+         * Compares two edges where child nodes are compared first, followed by edge label names.
+         *
+         * @param edge1 first edge
+         * @param edge2 second edge
+         * @return They are compared by alphabetically order.
+         * A negative integer if first edge is  less than second edge,
+         * a positive integer if first edge is greater than second edge,
+         * 0 if first edge is equal to second edge.
+         * @throws IllegalArgumentException if either of given edges are null
+         */
+        public int compare(Edge<String,String> edge1, Edge<String,String> edge2) {
+            if (edge1 == null || edge2 == null) throw new IllegalArgumentException();
+            if (edge1.getChildName().getParentName().compareTo(edge2.getChildName().getParentName()) != 0) {
+                return edge1.getChildName().getParentName().compareTo(edge2.getChildName().getParentName());
+            }
+            return edge1.getLabelName().compareTo(edge2.getLabelName());
+        }
     }
 }

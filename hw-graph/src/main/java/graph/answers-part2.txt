@@ -17,13 +17,28 @@ A few examples of possible Graph representations:
 representations listed above (for example, in terms of runtime complexity, space
 complexity, or ease of implementation).
 
+A: An advantage of a collection of nodes and a collection of edges is easy to access all the nodes
+and edges, making it easy to retrieve information about them. A disadvantage of this implementation
+is if I want to modify either the nodes or the edges, I have to modify both information, which is not
+efficient.
 
+B: An advantage of adjacency list is that is efficient because the time complexity of the add is O(1).
+It is also considered efficient when adding an edge, since the node and edge are directly connected.
+A disadvantage of adjacency list is that inefficient because edges must be checked when knowing
+the relationship between two nodes.
+
+C: An advantage of matrix is ease of knowing the relationship between two nodes regardless of edge.
+A disadvantage of matrix is high space complexity. It is inefficient to obtain multiple child nodes
+from one parent node.
 
 
 2. In two to three sentences, describe the representation you chose and explain why you
 chose it. If you chose to use a different representation than one of the three we described
 above, be sure to list its advantages and disadvantages, too.
 
+I chose B by using a hashmap representation with the parent node as a key and pair of edge label name
+and child node as value. I chose this because I can store all information of parent node and edge label name
+and child node in one collection, which makes it easy to access the all kinds of information.
 
 
 
@@ -35,11 +50,16 @@ above, be sure to list its advantages and disadvantages, too.
 1. Describe any new tests you added and why you added them, or why you feel that your original
 tests alone are sufficient.
 
-
-
+I think there are five patterns of cases to test. First, there is the case of adding one node to
+the graph and one edge to the graph. Then when the same edge name and the same node are added.
+And when a new edge with a different name is added where an edge already exists. As for nodes,
+when a node with the same name is added. All these cases are met by my test class. The only
+change I made is that I went from adding three nodes to two. The change is that I went from adding
+three nodes to two, because GraphTestDriver's rules do not allow three.
 
 2. Did you make any changes to your specifications as you were implementing your Graph? (yes/no)
 If yes, describe your changes and why you made them.
 
-
+I had tiny change. In addNode specification, I wrote about process which is about if the node what I
+want to add is already included in graph.
 

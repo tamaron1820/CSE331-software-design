@@ -8,6 +8,6 @@ created graph graph1
 added node n1 to graph1
 added node n1 to graph1
 
-# Print the nodes in the graph and the outgoing edges from n1 and n2
-graph contains: n1
-the children of n1 in multiNodeGraph are:
+# Print the nodes in the graph and the outgoing edges from a and b
+graph1 contains: n1
+the children of n1 in graph1 are:

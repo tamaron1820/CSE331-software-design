@@ -1,6 +1,5 @@
 # Tests that add Nodes correctly
 
-
 # Create a graph
 created graph graph1
 
@@ -8,7 +7,7 @@ created graph graph1
 added node n1 to graph1
 added node n2 to graph1
 
-# Print the nodes in the graph and the outgoing edges from n1 and n2
-graph contains: n1 n2
-the children of n1 in multiNodeGraph are:
-the children of n2 in multiNodeGraph are:
+# Print the nodes in the graph and the outgoing edges from a and b
+graph1 contains: n1 n2
+the children of n1 in graph1 are:
+the children of n2 in graph1 are:

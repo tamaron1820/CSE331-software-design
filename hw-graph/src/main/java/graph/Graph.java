@@ -24,13 +24,13 @@ public class Graph<N,E> implements BaseGraph<N,E> {
 
     // Abstract Function:
     // Graph g represents a map of Node which has parent name of node
-    // and child whihc is connected with parent
+    // and child which is connected with parent
     // and Edge which is for connecting child with parent
     //
     // Representation Invariant for every Graph:
     // graph!=null &&
     // for all nodes are not null and no duplicate
-    // for all Edges are not null and no duplicate
+    // for all Edges are not null and no same edges with same child
 
     /**
      * Constructs a new Graph
@@ -60,7 +60,7 @@ public class Graph<N,E> implements BaseGraph<N,E> {
     }
 
     /**
-     * Add a new Node which is not contained in graph.
+     * Add a new Node which is not contained in graph if the node is already included the node is not added.
      *
      * @param n is a name of the new parent node
      * @spec.requires n != null
