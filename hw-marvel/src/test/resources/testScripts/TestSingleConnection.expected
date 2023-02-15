@@ -1,0 +1,9 @@
+# Test if two nodes does not have any path
+
+# To run this test, the marvel dataset must exist at
+#   hw-marvel/src/main/resources/data/singleConnectionMarvel.csv
+
+loaded graph singleConnection
+
+path from HUMAN-ROBOT to GORILLA-MAN:
+HUMAN-ROBOT to GORILLA-MAN via WI?-9

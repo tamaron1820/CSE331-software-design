@@ -1,0 +1,11 @@
+# Tests that if team(In Marvel's example the book) have many children
+# priority increases in lexicographical order.
+
+# To run this test, the marvel dataset must exist at
+#   hw-marvel/src/main/resources/data/soccerPlayer.csv
+
+LoadGraph soccer soccerPlayer.csv
+
+FindPath soccer Mbappe Pedri
+
+FindPath soccer Pedri Mbappe

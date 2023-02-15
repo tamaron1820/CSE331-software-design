@@ -1,0 +1,9 @@
+# Test if the nodes are not existed in graph
+
+# To run this test, the marvel dataset must exist at
+#   hw-marvel/src/main/resources/data/soccerPlayer.csv
+
+loaded graph soccer
+
+unknown: Ronaldo
+unknown: Kevin-De-bruyne

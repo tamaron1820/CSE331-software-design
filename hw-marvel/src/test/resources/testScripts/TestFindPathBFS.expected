@@ -1,0 +1,9 @@
+# Test if finding a path by using BFS works correctly
+
+# To run this test, the marvel dataset must exist at
+#   hw-marvel/src/main/resources/data/soccerPlayer.csv
+
+loaded graph soccer
+
+path from Messi to Pedri:
+Messi to Pedri via Barcelona

@@ -1,0 +1,13 @@
+# Test if parent nodes have correct children
+
+# To run this test, the marvel dataset must exist at
+#   hw-marvel/src/main/resources/data/soccerPlayer.csv
+
+loaded graph soccer
+
+the children of Haland in soccer are:
+the children of Mbappe in soccer are: Messi(Paris-Saint-Germain) Neymar(Paris-Saint-Germain)
+the children of Messi in soccer are: Mbappe(Paris-Saint-Germain) Neymar(Barcelona) Neymar(Paris-Saint-Germain) Pedri(Barcelona)
+the children of Neymar in soccer are: Mbappe(Paris-Saint-Germain) Messi(Barcelona) Messi(Paris-Saint-Germain) Pedri(Barcelona) Robinho(Santus)
+the children of Pedri in soccer are: Messi(Barcelona) Neymar(Barcelona)
+the children of Robinho in soccer are: Neymar(Santus)

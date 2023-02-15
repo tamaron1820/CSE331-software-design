@@ -1,0 +1,8 @@
+# Test if team contains correct players(nodes)
+
+# To run this test, the marvel dataset must exist at
+#   hw-marvel/src/main/resources/data/soccerPlayer.csv
+
+LoadGraph soccer soccerPlayer.csv
+
+ListNodes soccer

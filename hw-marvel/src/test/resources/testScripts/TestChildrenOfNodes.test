@@ -1,0 +1,13 @@
+# Test if parent nodes have correct children
+
+# To run this test, the marvel dataset must exist at
+#   hw-marvel/src/main/resources/data/soccerPlayer.csv
+
+LoadGraph soccer soccerPlayer.csv
+
+ListChildren soccer Haland
+ListChildren soccer Mbappe
+ListChildren soccer Messi
+ListChildren soccer Neymar
+ListChildren soccer Pedri
+ListChildren soccer Robinho

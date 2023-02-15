@@ -1,0 +1,11 @@
+# Tests that if player(In Marvel's example the character) have many team
+# priority increases in lexicographical order.
+
+# To run this test, the marvel dataset must exist at
+#   hw-marvel/src/main/resources/data/soccerPlayer.csv
+
+LoadGraph soccer soccerPlayer.csv
+
+FindPath soccer Messi Robinho
+
+FindPath soccer Robinho Messi

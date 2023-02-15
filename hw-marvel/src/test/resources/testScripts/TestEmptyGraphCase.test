@@ -1,0 +1,3 @@
+# Test a graph if loaded csv file is empty
+
+LoadGraph heros emptyfile.csv

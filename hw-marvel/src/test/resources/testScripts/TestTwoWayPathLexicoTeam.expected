@@ -1,0 +1,15 @@
+# Tests that if player(In Marvel's example the character) have many team
+# priority increases in lexicographical order.
+
+# To run this test, the marvel dataset must exist at
+#   hw-marvel/src/main/resources/data/soccerPlayer.csv
+
+loaded graph soccer
+
+path from Messi to Robinho:
+Messi to Neymar via Barcelona
+Neymar to Robinho via Santus
+
+path from Robinho to Messi:
+Robinho to Neymar via Santus
+Neymar to Messi via Barcelona
