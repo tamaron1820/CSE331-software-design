@@ -1,0 +1,13 @@
+# Test if unknown nodes are called
+
+created graph graph1
+
+added node n1 to graph1
+added node n2 to graph1
+
+unknown: n9
+
+unknown: n5
+
+unknown: n3
+unknown: n4

@@ -1,0 +1,13 @@
+# Testing Dijkstra's algorithm when there are no paths between multiple nodes
+
+CreateGraph graph1
+
+AddNode graph1 n1
+AddNode graph1 n2
+AddNode graph1 n3
+
+FindPath graph1 n1 n2
+
+FindPath graph1 n2 n3
+
+FindPath graph1 n1 n3

@@ -79,7 +79,7 @@ public class Path<T> implements Iterable<Path<T>.Segment> {
     public Path<T> extend(T newEnd, double segmentCost) {
         checkRep();
         //
-        Path<T> extendedPath = new Path(start);
+        Path<T> extendedPath = new Path<>(start);
         extendedPath.path.addAll(this.path);
         extendedPath.path.add(new Segment(this.getEnd(), newEnd, segmentCost));
         extendedPath.cost = this.cost + segmentCost;
@@ -125,7 +125,7 @@ public class Path<T> implements Iterable<Path<T>.Segment> {
     @Override
     public Iterator<Segment> iterator() {
         // Create a wrapping iterator to guarantee exceptional behavior on Iterator#remove.
-        return new Iterator<Segment>() {
+        return new Iterator<>() {
 
             private Iterator<Segment> backingIterator = path.iterator();
 
@@ -135,7 +135,7 @@ public class Path<T> implements Iterable<Path<T>.Segment> {
             }
 
             @Override
-            public Path.Segment next() {
+            public Path<T>.Segment next() {
                 return backingIterator.next();
             }
 
@@ -173,10 +173,10 @@ public class Path<T> implements Iterable<Path<T>.Segment> {
         if(this == obj) {
             return true;
         }
-        if(!(obj instanceof Path)) {
+        if(!(obj instanceof Path<?>)) {
             return false;
         }
-        Path other = (Path) obj;
+        Path<?> other = (Path<?>) obj;
         if(this.path.size() != other.path.size()) {
             return false;
         }
@@ -306,7 +306,7 @@ public class Path<T> implements Iterable<Path<T>.Segment> {
             if(!(obj instanceof Path<?>.Segment)) {
                 return false;
             }
-            Segment other = (Segment) obj;
+            Path<?>.Segment other = (Path<?>.Segment) obj;
             return other.getStart().equals(this.getStart())
                    && other.getEnd().equals(this.getEnd())
                    && (Double.compare(this.cost, other.cost) == 0);

@@ -1,0 +1,19 @@
+# Testing Dijkstra's algorithm when there are three nodes which are connected as circle
+
+CreateGraph graph1
+
+AddNode graph1 n1
+AddNode graph1 n2
+AddNode graph1 n3
+
+AddEdge graph1 n1 n2 5.0
+AddEdge graph1 n2 n3 5.0
+AddEdge graph1 n3 n1 5.0
+
+FindPath graph1 n1 n2
+
+FindPath graph1 n2 n3
+
+FindPath graph1 n3 n1
+
+FindPath graph1 n1 n3

@@ -1,0 +1,28 @@
+# Testing Dijkstra's algorithm when there are three nodes which are connected as circle
+
+created graph graph1
+
+added node n1 to graph1
+added node n2 to graph1
+added node n3 to graph1
+
+added edge 5.000 from n1 to n2 in graph1
+added edge 5.000 from n2 to n3 in graph1
+added edge 5.000 from n3 to n1 in graph1
+
+path from n1 to n2:
+n1 to n2 with weight 5.000
+total cost: 5.000
+
+path from n2 to n3:
+n2 to n3 with weight 5.000
+total cost: 5.000
+
+path from n3 to n1:
+n3 to n1 with weight 5.000
+total cost: 5.000
+
+path from n1 to n3:
+n1 to n2 with weight 5.000
+n2 to n3 with weight 5.000
+total cost: 10.000

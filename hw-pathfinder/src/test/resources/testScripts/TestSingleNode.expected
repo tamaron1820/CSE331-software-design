@@ -1,0 +1,9 @@
+# Test whether Dijkstra's algorithm works correctly
+# if there is a single node which has no edges
+
+created graph graph1
+
+added node n1 to graph1
+
+path from n1 to n1:
+total cost: 0.000

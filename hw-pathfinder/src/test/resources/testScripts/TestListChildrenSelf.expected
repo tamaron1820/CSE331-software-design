@@ -1,0 +1,9 @@
+# Test whether list of children is existed correctly if there is self edge
+
+created graph graph1
+
+added node n1 to graph1
+
+added edge 2.000 from n1 to n1 in graph1
+
+the children of n1 in graph1 are: n1(2.0)

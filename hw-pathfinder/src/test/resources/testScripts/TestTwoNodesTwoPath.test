@@ -1,0 +1,12 @@
+# Testing whether Dijkstra's algorithm works correctly
+# if there are two nodes which have two edges
+
+CreateGraph graph1
+
+AddNode graph1 n1
+AddNode graph1 n2
+
+AddEdge graph1 n1 n2 5.0
+AddEdge graph1 n1 n2 10.0
+
+FindPath graph1 n1 n2

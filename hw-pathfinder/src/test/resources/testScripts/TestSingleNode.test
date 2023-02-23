@@ -1,0 +1,8 @@
+# Test whether Dijkstra's algorithm works correctly
+# if there is a single node which has no edges
+
+CreateGraph graph1
+
+AddNode graph1 n1
+
+FindPath graph1 n1 n1

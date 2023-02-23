@@ -1,0 +1,16 @@
+# Testing whether Dijkstra's algorithm works correctly
+# if there are two ways from some node to node which is same cost
+
+CreateGraph graph1
+
+AddNode graph1 n1
+AddNode graph1 n2
+AddNode graph1 n3
+AddNode graph1 n4
+
+AddEdge graph1 n1 n2 2.0
+AddEdge graph1 n1 n3 5.0
+AddEdge graph1 n2 n4 8.0
+AddEdge graph1 n3 n4 5.0
+
+FindPath graph1 n1 n4

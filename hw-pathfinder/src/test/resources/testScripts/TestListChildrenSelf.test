@@ -1,0 +1,9 @@
+# Test whether list of children is existed correctly if there is self edge
+
+CreateGraph graph1
+
+AddNode graph1 n1
+
+AddEdge graph1 n1 n1 2.0
+
+ListChildren graph1 n1

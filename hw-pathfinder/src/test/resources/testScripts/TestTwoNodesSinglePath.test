@@ -1,0 +1,11 @@
+# Testing Test whether Dijkstra's algorithm works correctly
+# if there are two nodes which have a single node
+
+CreateGraph graph1
+
+AddNode graph1 n1
+AddNode graph1 n2
+
+AddEdge graph1 n1 n2 1.0
+
+FindPath graph1 n1 n2

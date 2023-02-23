@@ -1,0 +1,15 @@
+# Test of Dijkstra's algorithm for calculating the decimal point in finding a path
+
+CreateGraph graph1
+
+AddNode graph1 n1
+AddNode graph1 n2
+AddNode graph1 n3
+
+AddEdge graph1 n1 n2 2.5567
+AddEdge graph1 n2 n3 3.6765
+
+ListChildren graph1 n1
+ListChildren graph1 n2
+
+FindPath graph1 n1 n3
