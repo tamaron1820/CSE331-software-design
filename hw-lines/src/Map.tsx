@@ -19,15 +19,31 @@ import { UW_LATITUDE_CENTER, UW_LONGITUDE_CENTER } from "./Constants";
 // This defines the location of the map. These are the coordinates of the UW Seattle campus
 const position: LatLngExpression = [UW_LATITUDE_CENTER, UW_LONGITUDE_CENTER];
 
+export interface Edge  {
+    x1: number;
+    y1: number;
+    x2: number;
+    y2: number;
+    color: string;
+}
 interface MapProps {
   // TODO: Define the props of this component. You will want to pass down edges
-  // so you can render them here
+    value: Edge[];
 }
 
 interface MapState {}
 
 class Map extends Component<MapProps, MapState> {
+    constructor(props: MapProps) {
+        super(props);
+    }
+
   render() {
+        let list : JSX.Element[] = [];
+        for ( let i = 0; i< this.props.value.length; i++) {
+            let element = this.props.value[i];
+            list.push(<MapLine color={element.color} x1={element.x1} y1={element.y1} x2={element.x2} y2={element.y2}/>);
+        }
     return (
       <div id="map">
         <MapContainer
@@ -43,7 +59,8 @@ class Map extends Component<MapProps, MapState> {
             // TODO: Render map lines here using the MapLine component. E.g.
             // <MapLine key={key1} color="red" x1={1000} y1={1000} x2={2000} y2={2000}/>
             // will draw a red line from the point 1000,1000 to 2000,2000 on the
-            // map 
+            // map
+              <div>{list}</div>
           }
         </MapContainer>
       </div>
