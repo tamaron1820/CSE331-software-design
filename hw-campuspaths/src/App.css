@@ -31,3 +31,26 @@ file was empty.
     width: 800px;
     height: 600px;
 }
+
+#titletext {
+    text-align: center;
+}
+#edge-list {
+    text-align: left;
+    margin: 5px;
+}
+
+#edge-list button {
+    font-size: 15px;
+    margin: 2px 5px;
+}
+
+#edge-list select {
+    font-size: 25px;
+    text-align: left;
+}
+#edge-list {
+    text-align: center;
+    font-size: 15px;
+    margin: 10px;
+}

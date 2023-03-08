@@ -9,16 +9,50 @@
  * author.
  */
 
-import React, {Component} from 'react';
+import React, {Component} from "react";
+import EdgeList from "./EdgeList";
+import Map from "./Map";
+import BldSelect  from "./EdgeList";
+
 
 // Allows us to write CSS styles inside App.css, any styles will apply to all components inside <App />
 import "./App.css";
 
-class App extends Component<{}, {}> {
+
+interface AppState {
+    val: Edge[] | null;
+}
+
+type Edge = {
+    x1: number;
+    y1: number;
+    x2: number;
+    y2: number;
+    color: string;
+}
+
+class App extends Component<{}, AppState> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            val: null
+        };
+    }
 
     render() {
         return (
-            <p>Here's the beginning of your AMAZING CampusPaths GUI!</p>
+            <div>
+                <h1 id="titletext">Find a way to destination!</h1>
+                <div>
+                    <Map value = {this.state.val}/>
+                </div>
+                <EdgeList onChange={(value) => {
+                    this.setState({
+                        val: value
+                    });
+                }}
+                />
+            </div>
         );
     }
 

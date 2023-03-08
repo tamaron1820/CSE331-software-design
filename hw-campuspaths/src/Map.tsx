@@ -15,6 +15,8 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import MapLine from "./MapLine";
 import { UW_LATITUDE_CENTER, UW_LONGITUDE_CENTER } from "./Constants";
+import {Edge} from "./EdgeList"
+
 
 // This defines the location of the map. These are the coordinates of the UW Seattle campus
 const position: LatLngExpression = [UW_LATITUDE_CENTER, UW_LONGITUDE_CENTER];
@@ -23,35 +25,56 @@ const position: LatLngExpression = [UW_LATITUDE_CENTER, UW_LONGITUDE_CENTER];
 // you don't want to use this component, you're free to delete it or replace it
 // with your hw-lines Map
 
+
+
 interface MapProps {
-  // TODO: Define the props of this component.
+    value: Edge[] | null;
 }
 
 interface MapState {}
 
 class Map extends Component<MapProps, MapState> {
-  render() {
-    return (
-      <div id="map">
-        <MapContainer
-          center={position}
-          zoom={15}
-          scrollWheelZoom={false}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          {
-            // TODO: Render map lines here using the MapLine component. E.g.
-            // <MapLine key="key1" color="red" x1={1000} y1={1000} x2={2000} y2={2000}/>
-            // will draw a red line from the point 1000,1000 to 2000,2000 on the
-            // map. Note that key should be a unique key that only this MapLine has.
-          }
-        </MapContainer>
-      </div>
-    );
-  }
+    constructor(props: MapProps) {
+        super(props);
+    }
+    drawLine(): JSX.Element[]{
+        let val = this.props.value;
+        let res: JSX.Element[] = [];
+        if (val === null){
+            return res;
+        }
+        for(let i = 0; i < val.length; i++) {
+            let e = val[i];
+            res.push(<MapLine key={i} color={e.color} x1={e.x1} y1={e.y1} x2={e.x2} y2={e.y2}/>);
+        }
+        return res;
+    }
+    render() {
+        //array containing MapLines
+
+        return (
+            <div id="map">
+                <MapContainer
+                    center={position}
+                    zoom={15}
+                    scrollWheelZoom={false}
+                >
+                    <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    {
+                        // TODO: Render map lines here using the MapLine component. E.g.
+                        // <MapLine key="key1" color="red" x1={1000} y1={1000} x2={2000} y2={2000}/>
+                        // will draw a red line from the point 1000,1000 to 2000,2000 on the
+                        // map. Note that key should be a unique key that only this MapLine has.
+                        this.drawLine()
+                    }
+                </MapContainer>
+            </div>
+        );
+
+    }
 }
 
 export default Map;

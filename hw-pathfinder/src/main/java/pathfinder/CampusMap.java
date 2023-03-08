@@ -138,7 +138,7 @@ public class CampusMap implements ModelAPI {
     @Override
     public Path<Point> findShortestPath(String startShortName, String endShortName) {
         // TODO: Implement this method exactly as it is specified in ModelAPI
-        if(!(shortNameExists(startShortName) && shortNameExists(endShortName))) {
+        if(!shortNameExists(startShortName) || !shortNameExists(endShortName)) {
             throw new IllegalArgumentException("The arguments name are not included in campus");
         }
         if( startShortName == null || endShortName == null ){
