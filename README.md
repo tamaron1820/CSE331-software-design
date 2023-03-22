@@ -3,7 +3,9 @@
 Campus のマップに出発地と到着地の最短経路を求める
 
 # DEMO
-![Campus_Paths_および他_2_ページ_-_個人_-_Microsoft__Edge_2023-03-12_22-48-34_AdobeExpress](https://user-images.githubusercontent.com/104906428/227011525-fee335b7-6163-4afe-9a53-e7a64c2dfbd3.gif)
+![sample2](https://user-images.githubusercontent.com/104906428/227012433-629ed6b5-7125-4544-bdca-51ed7f443103.gif)
+<img width="199" alt="sample1" src="https://user-images.githubusercontent.com/104906428/227012100-fcc9bd03-311b-4db6-9589-f53bb759508e.png">
+<img width="196" alt="sample3" src="https://user-images.githubusercontent.com/104906428/227012310-598d81f8-ee0f-419e-bf0b-86f2b326a920.png">
 
 # Features
 
